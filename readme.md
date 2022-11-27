@@ -44,7 +44,7 @@ The goal of this project is to replace the outdated database with a new system t
 1. Clone this repository and open it in your IDE of choice (PyCharm Community Edition is recommended)
 
 ```bash
-git clone https://github.com/averylam1/nucmami-absm.git
+git clone https://github.com/hkandaswamy/nuocmamis-absm.git
 ```
 
 2. Install requirements
