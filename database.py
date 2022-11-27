@@ -1,6 +1,8 @@
 import pymysql
 import sql_credentials
 
+# SQL server may no longer be active
+
 # Create database connection
 connection = pymysql.connect(
     host=sql_credentials.host,
