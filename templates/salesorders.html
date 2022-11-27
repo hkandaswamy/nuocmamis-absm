@@ -1,0 +1,471 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Create Sales Order Page</title>
+		<link rel="stylesheet" href="style.css">
+        <style>
+            p {
+                height: 50 px;
+                width: 50 px;
+                padding: 10px;
+                background: white;
+            }
+            table, th, td {
+                border: 1.5px solid gray;
+                border-collapse: collapse;
+            }
+
+        </style>
+	</head>
+		<div class="topNav">
+		<div class="topNav_name">
+			<b><p style="font-size:15px; text-align: left">ABSOLUTE MEDIA INC. </p> </b>
+		</div>
+
+	<body>
+		<header>
+			<h1 style = "text-align: center">Create Sales Order Page</h1>
+            <p style="padding-left: center;text-align: center;">Date, Time</p>
+            <table style="border-collapse: collapse; margin-left: 10pt">
+
+                <p> <b> Bill Information: </b> </p>
+			<div contenteditable = "true">
+				<p><u>Absolute Media, Inc</u></p>
+				<p><b>Contact</b> Accounts Payable <br>
+                <b>Phone:</b> <br>
+                <b>Address 1:</b> <br> <b>Address 2:</b> <br> <b>City: </b><br><b> State:</b> <br> <b> Zip: </b></p>
+			</div>
+
+                <p> <b> Product Information:</b> </P>
+                <address contenteditable>
+                <p>Product ID:
+                <br>Product Category:
+                <br>OEM Product ID: 
+                <br>Product Title: </p>
+                <p><br><u><b>Number of Colors: </b></u></p>
+                </address>
+
+            <table>    
+                <tr>
+                    <td>
+                        <b>Salesperson</b>
+                    </td>
+                    <td>
+                        <input type ="text" maxlength="50"/>
+                    </td>
+                    <td>
+                        <b>Requestor</b>
+                    </td>
+                    <td>
+                        <input type ="text" maxlength="50"/>
+                    </td> 
+                    <td>
+                        <b>Customer Contact</b>
+                    </td> 
+                    <td>
+                        <input type ="text" maxlength="50">
+                    </td>
+                    <td>
+                        <b>Re-Order?</b>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="re-order" name="re-order" value="re-order">
+                    </td>
+                    <tr>
+                        <td colspan="8" style="padding-top: 4pt;padding-left: center;text-align: center;">
+                            <b>Custom Product</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">
+                            <b>Factory Order Quantity:</b>
+                        </td>
+                        <td rowspan="2">
+                            <input type ="text" maxlength="50">
+                        </td>
+                        <td>
+                            Invoice
+                        </td>
+                        <td>
+                            Packing Slip
+                        </td>
+                        <td>
+                            Quantity
+                        </td>
+                        <td>
+                            Unit Price$
+                        </td>
+                        <td colspan="2">
+                            Total Price $
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="re-order" name="re-order" value="re-order"> 
+                        </td>
+                        <td>
+                            <input type="checkbox" id="re-order" name="re-order" value="re-order">
+                        </td>
+                        <td>
+                            <input type ="text" maxlength="50">
+                        </td>
+                        <td>
+                            <input type ="text" maxlength="50">
+                        </td>
+                        <td colspan="2">
+                            <input type ="text" maxlength="50">
+                        </td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td colspan="8" style="padding-top: 4pt;padding-left: center;text-align: center;">
+                        <b>Non-Inventory Line Items</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>1. Name:</b>
+                    </td>
+                    <td>
+                        <input type ="text" maxlength="50">
+                    </td>
+                    <td>
+                        <input type="checkbox" id="re-order" name="re-order" value="re-order"> 
+                    </td>
+                    <td>
+                        <input type="checkbox" id="re-order" name="re-order" value="re-order">
+                    </td>
+                    <td>
+                        <input type ="text" maxlength="50">
+                    </td>
+                    <td>
+                        <input type ="text" maxlength="50">
+                    </td>
+                    <td colspan="2">
+                        <input type ="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="padding-top: 4pt;padding-left: center;text-align: center;">
+                        <b>Inventory Items</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2" colspan="2">
+                        <b>Item 1 Quantity and Pricing:</b>
+                    </td>
+                    <td>
+                        Invoice
+                    </td>
+                    <td>
+                        Packing Slip
+                    </td>
+                    <td>
+                        Quantity
+                    </td>
+                    <td>
+                        Unit Price$
+                    </td>
+                    <td colspan="2">
+                        Total Price $
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="re-order" name="re-order" value="re-order"> 
+                    </td>
+                    <td>
+                        <input type="checkbox" id="re-order" name="re-order" value="re-order">
+                    </td>
+                    <td>
+                        <input type ="text" maxlength="50">
+                    </td>
+                    <td>
+                        <input type ="text" maxlength="50">
+                    </td>
+                    <td colspan="2">
+                        <input type ="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="padding-top: 4pt;padding-left: center;text-align: center;">
+                        <b>Billing Information</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Assembly Charges
+                    </td>
+                    <td colspan="2"></td>
+                        <input type ="text" maxlength="50">
+                    </td>
+                    <td colspan="2">
+                        $<input type ="text" maxlength="50">
+                    </td>
+                    <td colspan="2">
+                        $<input type ="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Date Code Printing Charges
+                    </td>
+                    <td colspan="2"></td>
+                        <input type ="text" maxlength="50">
+                    </td>
+                    <td colspan="2">
+                        $<input type ="text" maxlength="50">
+                    </td>
+                    <td colspan="2">
+                        $<input type ="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                    Date Code Setup Charge
+                    </td>
+                    <td colspan="6">
+                        $<input type ="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                    Art Manipulation / Film Charges for Screens
+                    </td>
+                    <td colspan="2">
+                        Number of Screens:
+                    </td>
+                    <td>
+                        <input type ="text" maxlength="50">
+                    </td>
+                    <td colspan="5">
+                        $<input type ="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                    Sub Total
+                    </td>
+                    <td colspan="6">
+                        $<input type ="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                    Taxable? <input type="checkbox" id="re-order" name="re-order" value="re-order">
+                    </td>
+                    <td colspan="2">
+                        Tax Rate% <input type ="text" maxlength="50">
+                    </td>
+                    <td colspan="4">
+                        Tax $<input type ="text" maxlength="50">
+                    </td>
+                </td>
+                <tr>
+                    <td colspan="2"> 
+                        Freight Charges
+                    </td>
+                    <td colspan="6">
+                        $<input type ="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                        Order Price Total
+                    </td>
+                    <td colspan="6">
+                        $<input type ="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="padding-top: 4pt;padding-left: center;text-align: center;">
+                        <b>Invoice Information</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Invoice Date
+                    </td>
+                    <td colspan="6">
+                        <input type = "date">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                        Invoice Date Paid
+                    </td>
+                    <td colspan="6">
+                        <input type = "date">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Invoice Notes
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="padding-top: 4pt;padding-left: center;text-align: center;">
+                        <b>Job Information</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                        ABS Sales Order Date
+                    </td>
+                    <td colspan="6">
+                        <input type = "date">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                        Customer Order Date
+                    </td>
+                    <td colspan="6">
+                        <input type = "date">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                        Customer PO Date
+                    </td>
+                    <td colspan="6">
+                        <input type = "date">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Customer PO Number
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                    Credit Checked? <input type="checkbox" id="re-order" name="re-order" value="re-order">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Days Turn
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                        Date Code Printing
+                    </td>
+                    <td colspan="6">
+                        <input type = "date">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Assembly By
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Disc Manufactured By
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        CD-R / DVD-R Brand
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                    <td>
+                        Disc Provided By
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    Customer Provided Material
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    Customer Material ETA
+                    </td>
+                    <td colspan="6">
+                        <input type = "date">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    Customer Notes
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    Vendor Notes
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    Order Notes
+                    </td>
+                    <td colspan="6">
+                        <input type ="text" maxlength="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        Order Status Submitted? <input type="checkbox" id="re-order" name="re-order" value="re-order">
+                    </td>
+                </tr>
+            </table>
+	</body>
+    <script>
+
+        function editOrder(e, cid){
+            e.preventDefault()
+            let orderRow = document.querySelector(`#order-${cid}`)
+    
+    
+            let i =0
+            for (let cell of orderRow.cells){
+    
+                if (!cell.outerHTML.includes("href=\"")){
+                    // Cant edit OEM ID
+                    if (i === 0 || i === 1){
+                        cell.innerHTML = `<input id="${cell.classList[0].split('-')[1]}Edit" name="${cell.classList[0].split('-')[1]}Edit" type="text" value="${cell.innerText}" readonly >`
+                    } else {
+                       cell.innerHTML = `<input id="${cell.classList[0].split('-')[1]}Edit" name="${cell.classList[0].split('-')[1]}Edit" type="text" value="${cell.innerText}">`
+                    }
+                }
+    
+                if (cell.outerHTML.includes("edit-")){
+                    cell.getElementsByTagName("a")[0].removeAttribute("onclick")
+                    cell.getElementsByTagName("a")[0].innerHTML = '{{edit_order_form.submitEdit()}}'
+                }
+                i ++
+            }
+        }
+    </script>
+</html>

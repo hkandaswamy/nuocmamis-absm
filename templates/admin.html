@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Create new user </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<h1>
+    Create a new user
+</h1>
+{% if message %}
+<h5>{{message}}</h5>
+{% endif %}
+
+<div>
+    {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
+        {% if message %}
+    <p class=error><strong>Result:</strong> {{ message }}
+        {% endif %}
+
+        <span style="display: flow">
+
+{% if user.userType=="admin" %}
+<form class="login" method="POST" action="">
+    {{create_user_form.hidden_tag()}}
+    <fieldset>
+
+        <cpTitle class="cpTitle"><b>Create account</b></cpTitle>
+
+        <div class="input">
+            {{create_user_form.email(placeholder="Email")}}
+
+            <span><i class="fa fa-envelope-o"></i></span>
+        </div>
+
+        <div class="input">
+            {{create_user_form.password(placeholder="********")}}
+            <span><i class="fa fa-lock"></i></span>
+        </div>
+
+        {{create_user_form.userType()}}
+
+        {{create_user_form.submitCreate()}}
+
+    </fieldset>
+
+</form>
+
+ <form class="accountsTable" method="POST" action="">
+                {{create_user_form.hidden_tag()}}
+                <h1 style="text-align: center">Search for Account</h1>
+                <fieldset>
+
+                <table align="center" border="0" cellspacing="10">
+
+                <tr>
+                    <td>Search Query</td>
+                    <td>{{search_user_form.searchQuery()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        {{search_user_form.submitSearch()}}
+<!--                        <button type="submit" class="submit">Search</button> -->
+                    </td>
+                </tr>
+            </table>
+                <hr>
+                    <h3 style="text-align: center">Users</h3>
+
+                    <table style="margin: auto;" border="1" id="searchResults" class="table table-striped table-sm">
+                        <tr>
+                            <th>User ID</th>
+                            <th>Email</th>
+<!--                            <th>Password</th>-->
+                            <th>User Type</th>
+                            <th>Delete</th>
+
+                        </tr>
+                        {% if user_search_results %}
+                        {% for user in user_search_results %}
+                        <tr>
+                            <td>{{user.id}}</td>
+                            <td>{{user.email}}</td>
+<!--                            <td>{{user.password}}</td>-->
+                            <td>{{user.userType}}</td>
+                            <td>
+                                <a href="{{url_for('delete_user', user_id=user.id)}}"
+                                onclick="return confirm(`Do you want to permanently delete {{user.email}} (ID:{{user.id}}) `);">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </table>
+
+            </fieldset>
+
+            </form>
+            {% else %}
+            Only Admins - No access
+{% endif %}
+
+
+
+
+            </span>
+
+
+</div>
+</body>
+<script>
+
+
+</script>
+</html>
+
+{% endblock %}

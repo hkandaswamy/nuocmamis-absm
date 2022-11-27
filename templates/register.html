@@ -1,0 +1,51 @@
+{% block body %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ABSOLUTE MEDIA INC. | CONTROL PANEL</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<div class="topNav">
+    <div class="topNav_name">
+        <b>ABSOLUTE MEDIA</b> INC.
+    </div>
+</div>
+<body>
+
+
+</body>
+
+<form class="login" method="POST" action="">
+    {{form.hidden_tag()}}
+    <fieldset>
+
+        <cpTitle class="cpTitle"><b>REGISTER ACCOUNT</b></cpTitle>
+
+        <div class="input">
+            {{form.email(placeholder="Email")}}
+
+            <span><i class="fa fa-envelope-o"></i></span>
+        </div>
+
+        <div class="input">
+            {{form.password(placeholder="********")}}
+            <span><i class="fa fa-lock"></i></span>
+        </div>
+
+        <button type="submit" class="submit">CREATE</button>
+
+    </fieldset>
+
+    <div class="feedback">
+        Welcome back! <br/>
+    </div>
+
+</form>
+{% if error %}
+<p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+
+    <script src="https://kit.fontawesome.com/c5491183fd.js" crossorigin="anonymous"></script>
+    <script src="/static/login.js"></script>
+</html>
+{% endblock %}

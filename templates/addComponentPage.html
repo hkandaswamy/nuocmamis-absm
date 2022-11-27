@@ -1,0 +1,31 @@
+<!--
+    Dominic Nance, CSC 191
+    This code is the HTML for the addComponent page
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src = "addComponentAndSubmitString.js"></script>
+        <title>ABSOLUTE MEDIA, INC.</title>
+    </head>
+
+    <body>
+        <p>Item: <input type = "text" id = "itemOrder"></p>
+        <table id = "tab">
+            <tr>
+                <td id = "component">Components</td>  
+            </tr>
+            <tbody>
+                <tr> 
+                    <td>
+                        <input type = "text" id = "input"><br><br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p><button id = "add" onclick = "addNewComponent()">Add Component</button></p>
+        <p><button id = "done" onclick = "makeWholeOrderIntoString()">Done</button></p>
+    </body>
+</html>

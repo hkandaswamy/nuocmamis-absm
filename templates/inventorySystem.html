@@ -1,0 +1,183 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Inventory Tracking System </title>
+</head>
+<body>
+
+		{% if user.userType=="admin" or user.userType=="employee" %}
+		<div>
+    {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
+        {% if message %}
+    <p class=error><strong>Result:</strong> {{ message }}
+        {% endif %}
+     <span style="display: flow">
+
+        <form class="searchInventory" method="POST" action="">
+                {{query_SearchInventory_form.hidden_tag()}}
+                <h1 style="text-align: center">Search for Inventory</h1>
+                <fieldset>
+
+                <table align="center" border="0" cellspacing="10">
+                <tr>
+                    <td>Search Option</td>
+                    <td>{{query_SearchInventory_form.inventorySearchOptions()}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Search Query</td>
+                    <td>{{query_SearchInventory_form.inventSearchQuery()}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{query_SearchInventory_form.submitInventorySearch()}}
+                    </td>
+                </tr>
+            </table>
+                <hr>
+
+            </fieldset>
+
+            </form>
+
+                    <h2 style="text-align: center">Results</h2>
+
+                    <table style="margin: auto;" border="1" id="searchResults">
+                        <tr>
+                            <th>inventoryID</th>
+                            <th>inventoryItem</th>
+                            <th>providedByCustomer</th>
+                            <th>customerID</th>
+                            <th>descriptionofItem</th>
+                            <th>inventoryDateObtained</th>
+                            <th>inventoryDateReleased</th>
+                            <th>materialOfItem</th>
+							<th>quantity</th>
+							<th>carrier</th>
+							<th>signedBy</th>
+							<th>manufacturerPN</th>
+                        </tr>
+                        {% if inventorysearchresult %}
+                        {% for inventory in inventorysearchresult %}
+                        <tr>
+                            <td>{{inventory.inventoryID}}</td>
+                            <td>{{inventory.inventoryItem}}</td>
+                            <td>{{inventory.providedByCustomer}}</td>
+                            <td>{{inventory.customerID}}</td>
+                            <td>{{inventory.descriptionofItem}}</td>
+                            <td>{{inventory.inventoryDateObtained}}</td>
+                            <td>{{inventory.inventoryDateReleased}}</td>
+                            <td>{{inventory.materialOfItem}}</td>
+							<td>{{inventory.quantity}}</td>
+							<td>{{inventory.carrier}}</td>
+							<td>{{inventory.signedBy}}</td>
+							<td>{{inventory.manufacturerPN}}</td>
+
+
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </table>
+
+            <form class="newInventorySystem" method="POST">
+            {{new_inventorySystem_form.hidden_tag()}}
+            <h1 style="text-align: center">Inventory System</h1>
+            <fieldset>
+
+
+            <table align="center" border="1" cellspacing="10">
+
+                <tr>
+                    <td>Inventory ID</td>
+                    <td>{{new_inventorySystem_form.ID()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Inventory Item</td>
+                    <td>{{new_inventorySystem_form.inventoryItem()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Provided By Customer</td>
+                    <td>{{new_inventorySystem_form.providedByCustomer()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Customer ID</td>
+                    <td>{{new_inventorySystem_form.customerID()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Description</td>
+                    <td>{{new_inventorySystem_form.descriptionOfItem()}}
+                    </td>
+                </tr>
+
+				<tr>
+                    <td>inventoryDateObtained</td>
+                    <td>{{new_inventorySystem_form.inventoryDateObtained()}}
+                    </td>
+                </tr>
+
+				<tr>
+                    <td>inventoryDateReleased</td>
+                    <td>{{new_inventorySystem_form.inventoryDateReleased()}}
+                    </td>
+                </tr>
+
+				<tr>
+                    <td>materialOfItem</td>
+                    <td>{{new_inventorySystem_form.materialOfItem()}}
+                    </td>
+                </tr>
+
+				<tr>
+                    <td>quantity</td>
+                    <td>{{new_inventorySystem_form.quantity()}}
+                    </td>
+                </tr>
+
+				<tr>
+                    <td>carrier</td>
+                    <td>{{new_inventorySystem_form.carrier()}}
+                    </td>
+                </tr>
+
+				<tr>
+                    <td>manufacturerPN</td>
+                    <td>{{new_inventorySystem_form.manufacturerPN()}}
+                    </td>
+                </tr>
+
+				<tr>
+                    <td>signedBy</td>
+                    <td>{{new_inventorySystem_form.signedBy()}}
+                    </td>
+                </tr>
+
+            </table>
+            </fieldset>
+	    <center>{{new_inventorySystem_form.submit()}}</center>
+                 </form>
+        </span>
+        </div>
+            {% else %}
+            Employees only! - No access
+
+{% endif %}
+</body>
+</html>
+
+{% endblock %}

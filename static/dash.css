@@ -1,0 +1,203 @@
+html{
+	background-color: #282828;
+	font-family: 'Roboto', sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+body{
+	margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    min-width: 960px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.topNav{
+	background-color: #282828;
+	color: #fff;
+	font-size: 18px;
+    overflow: hidden;
+	width: 100%;
+	height: 70px;
+    margin: auto;
+}
+
+.topNav_name{
+	float: left;
+	text-align: center;
+	padding: 24px 30px;
+	padding-bottom: 50%;
+	text-decoration: none;
+}
+
+.welcome_name{
+    float: right;
+    text-align: left;
+    padding: 24px 75px;
+    padding-bottom: 50%;
+    text-decoration: none;
+}
+
+.welcome_name a:visited{
+    color: #ef5858;
+}
+
+.sideNav {
+    position: absolute;
+    width: 301px;
+    height: 956px;
+    left: 0px;
+    top: 68px;
+
+    background: #282828;
+}
+
+.dashboard_label{
+    position: absolute;
+    margin: auto;
+    left: 38px;
+    top: 70px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #FFFFFF;
+}
+
+
+.management_label {
+    position: absolute;
+    margin: auto;
+    left: 38px;
+    top: 130px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #FFFFFF;
+}
+
+.admin_label {
+    position: absolute;
+    margin: auto;
+    left: 38px;
+    top: 100px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #FFFFFF;
+}
+
+.cp_label{
+    position: absolute;
+    width: 250px;
+    height: 28px;
+    left: 45px;
+    top: 40px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #474745;
+
+}
+
+.cp_box{
+    position: absolute;
+    min-width: 100%;
+    height: 200%;
+    left: 275px;
+    top: 115px;
+    margin: auto;
+    background: #F0F0F0;
+    border: 3px solid #F0F0F0;
+    box-sizing: border-box;
+    border-top-left-radius: 20px;
+    overflow: scroll;
+}
+
+.cp_intro{
+    position: absolute;
+    width: 600px;
+    height: 60px;
+    left: 45px;
+    top: 85px;
+    right: 45px;
+
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24.5px;
+    line-height: 35px;
+
+    color: #000000;
+}
+
+.box{
+    width: 181px;
+    height: 181px;
+    background: #C4C4C4;
+    text-align: center;
+    line-height: 150px;
+    margin: 15px;
+}
+
+#account{
+    top: 125%;
+    left: 0%;
+}
+
+#messages{
+    top: 125%;
+   left: 35%;
+}
+
+#management{
+    top: 125%;
+    left: 70%;
+}
+
+#administration{
+    top: 125%;
+    left: 105%
+}
+
+#schedules{
+    top: 125%;
+    left: 140%;
+}

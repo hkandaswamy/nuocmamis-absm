@@ -1,0 +1,44 @@
+<!-- 
+    Dominic Nance, CSC 191
+    This file makes a button that allows for a user to input mulitple shipping addresses into a form
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Button that inputs multiple addresses</title>
+	</head>
+
+	<body>
+        <script>
+            function inputAnotherAddress() {
+                document.getElementById("header").textContent = "Addressses";
+                var tableReference = document.getElementById("tab").getElementsByTagName("tbody")[0];
+
+                // Inserts a new row and a cell into the table
+                var newRow = tableReference.insertRow();
+                var newCell = newRow.insertCell();
+                
+                // Inputs text into a new row above the text input, empties out text box for more
+                // input if user wants
+                var inputText = document.getElementById("input").value;
+                var newText = document.createTextNode(inputText);
+                newCell.appendChild(newText);
+            }
+        </script>
+		<table id = "tab">
+            <tr>
+                <td id = "header">Address</td>  
+            </tr>
+            <tbody>
+                <tr> 
+                    <td>
+                        <input type = "text" id = "input"><br><br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="inputAnotherAddress()">Input another address</button>
+	</body>
+</html>

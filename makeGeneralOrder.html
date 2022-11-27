@@ -1,0 +1,57 @@
+<!-- 
+    Dominic Nance, CSC 191
+    This page allows for an employee to make a general order that, if left unfinished, can be
+    finished later. NM-63
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Track & Issue Reports</title>
+	</head>
+
+	<body>
+        <script>
+            // Holds all the local storage vars
+            const orderNameHold = "";
+            const orderHold = "";
+            const dateOfOrderHold = "";
+            
+            function makeGeneralOrder() {
+                const orderName = document.getElementById("clientName").value;
+                const order = document.getElementById("order").value;
+                const dateOfOrder = document.getElementById("dateOfOrder").value;
+                
+                if (confirm("Would you like to save this order for later?")) {
+                    alert("order saved");
+                    localStorage.orderNameHold = orderName;
+                    localStorage.orderHold = order;
+                    localStorage.dateOfOrderHold = dateOfOrder;
+                } else {
+                    alert("order not saved");
+                }
+            }
+
+            function retrieveOrderInfo() {
+                alert(localStorage.orderHold);
+                document.getElementById("clientName").value = localStorage.orderNameHold; 
+                document.getElementById("order").value = localStorage.orderHold;
+                document.getElementById("dateOfOrder").value = localStorage.dateOfOrderHold;
+            }
+        </script>
+
+        <!--
+            *Note* - this demonstration uses dummy variables - all the vars need to be
+            incorporated
+        -->
+        <p id="displayArea">Please refer to the button prompt.</p>
+        <p>Client name/company: </p>
+        <input type = "text" id = "clientName">
+        <p>Order: </p>
+        <input type = "text" id = "order">
+        <p>Date of order:</p>
+        <input type = "date" id = "dateOfOrder">
+        <p> <button onclick="makeGeneralOrder()">Make General Order</button> </p>
+        <p> <button onclick="retrieveOrderInfo()">Retrieve Order Info</button> </p>
+	</body>
+</html>

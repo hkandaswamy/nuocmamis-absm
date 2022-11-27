@@ -1,0 +1,71 @@
+<!-- 
+    Dominic Nance, CSC 191
+    This file makes a scenario in which the client can see their order status and the number of 
+    items shipped. This functionality needs to be applied to order status forms. NM-56
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Check order status quantity</title>
+	</head>
+
+	<body>
+        <script>
+            function countOrder() {
+                var shippingOrderCount = 0;
+                var remainingShippingCount = 0;
+                const totalItemsShipped = [document.getElementById("ord1item1").textContent.toString(), 
+                                           document.getElementById("ord1item2").textContent.toString(), 
+                                           document.getElementById("ord1item3").textContent.toString(), 
+                                           document.getElementById("ord1item4").textContent.toString(), 
+                                           document.getElementById("ord1item5").textContent.toString(),
+                                           document.getElementById("ord2item1").textContent.toString(), 
+                                           document.getElementById("ord2item2").textContent.toString(),
+                                           document.getElementById("ord2item3").textContent.toString(), 
+                                           document.getElementById("ord2item4").textContent.toString(), 
+                                           document.getElementById("ord2item5").textContent.toString()];
+
+                // count the total number of shipped items
+                for(let i = 0; i <totalItemsShipped.length; i++) {
+                    let verifyShippedItem = totalItemsShipped[i].includes("not");
+                    
+                    if (!verifyShippedItem) {
+                        shippingOrderCount++;
+                    } else {
+                        remainingShippingCount++;
+                    }
+                }
+
+                // change the amount displayed in the 'total items shipped' text
+                document.getElementById("total").textContent = shippingOrderCount;
+                document.getElementById("remaining").textContent = remainingShippingCount;
+            }
+        </script>
+		<h1><b>Order #1</b> - <i>full order not shipped</i></h1>
+            <ul>
+                <li>CDs x 12 - <i id="ord1item1">shipped</i></li>
+                <li>Posters x 2 - <i id="ord1item2">not shipped</i></li>
+                <li>Pens x 50 - <i id="ord1item3">not shipped</i></li>
+                <li>Ink x 4 - <i id="ord1item4">shipped</i></li>
+                <li>Pencils x 20 - <i id="ord1item5">shipped</i></li>
+            </ul>
+
+        <h1><b>Order #2</b> - <i>full order shipped</i></h1>
+            <ul>
+                <li>CDs x 20 - <i id="ord2item1">shipped</i></li>
+                <li>Posters x 6 - <i id="ord2item2">shipped</i></li>
+                <li>Pens x 5 - <i id="ord2item3">shipped</i></li>
+                <li>Ink x 55 - <i id="ord2item4">shipped</i></li>
+                <li>Pencils x 4 - <i id="ord2item5">shipped</i></li>
+            </ul>
+
+        <h3><b>Order Shipping quantity</b></h3>
+            <ul>
+                <li>Total items shipped = <i id="total">0</i></li>
+                <li>Remaining items = <i id="remaining">0</i></li>
+            </ul>
+
+        <button onclick="countOrder()">orderCount</button>
+	</body>
+</html>

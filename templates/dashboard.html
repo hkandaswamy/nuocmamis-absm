@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div style="min-height: 100%; min-height: 100vh; display: flex; align-items: center;">
+
+    <div class="container" >
+<h2> Dashboard </h2>
+        <div class="border" style="padding: 10px">
+            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 gap-3" style="margin: 5px">
+                <a class="col-sm btn btn-primary" href="{{url_for('customers')}}" > Manage Customers </a>
+                <a class="col-sm btn btn-primary" href="{{url_for('products')}}" > <div id = "newProduct"> Manage Products </div></a>
+                <a class="col-sm btn btn-primary" href="{{url_for('quotes_page')}}" > <div id = "createQuote"> Manage Quotes </div></a>
+                <a class="col-sm btn btn-primary" href="{{url_for('inventorySystem')}}" > <div id = "inventorySystem"> Inventory </div></a>
+                <a class="col-sm btn btn-primary" href="{{url_for('add_Accounts')}}" > <div id = "Multiple Shipping Accounts">Add Shipping</div></a>
+
+            </div>
+            <div style="margin-top: 30px">
+                {% if user.userType=="admin" %}<a href="{{url_for('admin')}}" class="col-sm btn btn-danger"> Administration </a>{% endif %}
+            </div>
+        </div>
+
+
+</div>
+</div>
+
+
+{% endblock %}

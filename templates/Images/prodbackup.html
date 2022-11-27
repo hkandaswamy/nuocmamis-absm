@@ -1,0 +1,163 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+    <head>
+       <meta charset="UTF-8">
+       <title> Product Page </title>
+       <link rel="stylesheet" href="/static/products.css">
+    </head>
+
+    <body>
+    <header>
+        Add/Edit Products
+    </header>
+        <div>
+            {% if error %}
+<p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+                        {% if message %}
+<p class=error><strong>Result:</strong> {{ message }}
+    {% endif %}
+            <form class="product" method="POST" action="">
+
+            <fieldset>
+                {{query_product_form.hidden_tag()}}
+
+            <h1 style="text-align:center">Search Products</h1>
+
+            <label for="productSearchFields">Search by:</label>
+
+            <select name="productSearchFields" id="productSearchFields">
+              <option value="customerID">Customer ID</option>
+              <option value="oemID">OEM ID</option>
+              <option value="productType">Product Type</option>
+              <option value="title">Title</option>
+            </select>
+
+            <tr>
+                    <td>Search for:</td>
+                    <td>{{query_product_form.productSearchQuery()}}
+                    </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{query_product_form.submitProductSearch()}}
+                </td>
+            </tr>
+
+            <table style="margin: auto;" border="1" id="searchResults">
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>OEM ID</th>
+                            <th>Product Type</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Color Notes</th>
+                            <th>Packaging Notes</th>
+                            <th>Product Notes</th>
+                            <th>Service Notes</th>
+                            <th>Insert</th>
+                        </tr>
+                        {% if productSearchResults %}
+                        {% for product in productSearchResults %}
+                        <tr>
+                            <td>{{product.customerID}}</td>
+                            <td>{{product.oemID}}</td>
+                            <td>{{product.productType}}</td>
+                            <td>{{product.title}}</td>
+                            <td>{{product.productDescription}}</td>
+                            <td>{{product.colorNotes}}</td>
+                            <td>{{product.packagingNotes}}</td>
+                            <td>{{product.productNotes}}</td>
+                            <td>{{product.serviceNotes}}</td>
+                            <td>{{product.insert}}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </table>
+
+            <fieldset>
+                {{new_product_form.hidden_tag()}}
+
+            <h1 style="text-align:center">Create Product</h1>
+
+            <table align="left" border="0" cellspacing="10">
+
+                <tr>
+                    <td>Customer ID</td>
+                    <td>{{new_product_form.customerID()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>OEM ID</td>
+                    <td>{{new_product_form.oemID()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Product Type</td>
+                    <td>{{new_product_form.productType()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Title</td>
+                    <td>{{new_product_form.title()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Description</td>
+                    <td>{{new_product_form.productDescription()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Color Notes</td>
+                    <td>{{new_product_form.colorNotes()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Packaging Notes</td>
+                    <td>{{new_product_form.packagingNotes()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Product Notes</td>
+                    <td>{{new_product_form.productNotes()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Service Notes</td>
+                    <td>{{new_product_form.serviceNotes()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Insert</td>
+                    <td>{{new_product_form.insert()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><button type="submit" class="submit">Submit</button> </td>
+                </tr>
+            </table>
+            </fieldset>
+
+
+
+            </form>
+            
+
+        </div>
+    </body>
+
+</html>
+
+{% endblock %}

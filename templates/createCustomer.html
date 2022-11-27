@@ -1,0 +1,334 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Create Customer </title>
+<!--    <link rel="stylesheet" href="customer.css">-->
+</head>
+
+<body>
+<header>
+    <!--Add a new Customer!-->
+</header>
+
+{% if user.userType=="admin" or user.userType=="employee" %}
+<div>
+    {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
+        {% if message %}
+    <p class=error><strong>Result:</strong> {{ message }}
+        {% endif %}
+
+        <span style="display: flow">
+
+            <form class="searchCustomer" method="POST" action="">
+                {{query_customer_form.hidden_tag()}}
+                <h1 style="text-align: center">Search for Customer</h1>
+                <fieldset>
+
+                <table align="center" border="0" cellspacing="10">
+                <tr>
+                    <td>Search Option</td>
+                    <td>{{query_customer_form.searchOption()}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Search Query</td>
+                    <td>{{query_customer_form.searchQuery()}}
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        {{query_customer_form.submit()}}
+<!--                        <button type="submit" class="submit">Search</button> -->
+                    </td>
+                </tr>
+            </table>
+                <hr>
+            </fieldset>
+
+            </form>
+
+            <h3 style="text-align: center">Results</h3>
+
+
+            <form class="editCustomer" method="POST">
+                {{edit_customer_form.hidden_tag()}}
+                <table style="margin: auto;" border="1" id="searchResults" class="table table-striped table-sm">
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Company</th>
+                            <th>Title</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Billing Address 1</th>
+                            <th>Billing Address 2</th>
+                            <th>Billing City</th>
+                            <th>Billing State</th>
+                            <th>Billing Zip</th>
+                            <th>Billing Country</th>
+                            <th>Billing Address 1</th>
+                            <th>Billing Address 2</th>
+                            <th>Billing City</th>
+                            <th>Billing State</th>
+                            <th>Billing Zip</th>
+                            <th>Billing Country</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% if customer_search_results %}
+                        {% for customer in customer_search_results %}
+                        <tr id="customer-{{customer.customerID}}">
+                            <td class="customer-customerID">{{customer.customerID}}</td>
+                            <td class="customer-firstName">{{customer.firstName.title()}}</td>
+                            <td class="customer-lastName">{{customer.lastName.title()}}</td>
+                            <td class="customer-title">{% if customer.company %} {{customer.company.title()}} {% endif %}</td>
+                            <td class="customer-title">{{customer.title.title()}}</td>
+                            <td class="customer-email">{{customer.email}}</td>
+                            <td class="customer-phone">{{customer.phone}}</td>
+                            <td class="customer-billingAddress1">{{customer.billingAddress1.title()}}</td>
+                            <td class="customer-billingAddress2">{{customer.billingAddress2.title()}}</td>
+                            <td class="customer-billingCity">{{customer.billingCity.title()}}</td>
+                            <td class="customer-billingState">{{customer.billingState.title()}}</td>
+                            <td class="customer-billingZip">{{customer.billingZip}}</td>
+                            <td class="customer-billingCountry">{{customer.billingCountry.title()}}</td>
+                            <td class="customer-shippingAddress1">{{customer.shippingAddress1.title()}}</td>
+                            <td class="customer-shippingAddress2">{{customer.shippingAddress2.title()}}</td>
+                            <td class="customer-shippingCity">{{customer.shippingCity.title()}}</td>
+                            <td class="customer-shippingState">{{customer.shippingState.title()}}</td>
+                            <td class="customer-shippingZip">{{customer.shippingZip}}</td>
+                            <td class="customer-shippingCountry">{{customer.shippingCountry.title()}}</td>
+                            <td>
+                                <a href="#" id="edit-{{customer.customerID}}"
+                                onclick="editCustomer(event, '{{customer.customerID}}')">
+                                    Edit
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{url_for('delete_customer', customer_id=customer.customerID)}}"
+                                onclick="return confirm(`Do you want to permanently delete {{customer.firstName.title()}} {{customer.lastName.title()}} - CID:{{customer.customerID}} `);">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </table>
+            </form>
+
+
+
+            <form class="newCustomer" method="POST">
+            {{new_customer_form.hidden_tag()}}
+            <h1 style="text-align: center">Create a new Customer</h1>
+            <fieldset>
+
+
+            <table align="center" border="0" cellspacing="10">
+
+                <tr>
+                    <td>First Name</td>
+                    <td>{{new_customer_form.firstName()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Last Name</td>
+                    <td>{{new_customer_form.lastName()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Company</td>
+                    <td>{{new_customer_form.company()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Title</td>
+                    <td>{{new_customer_form.title()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Email</td>
+                    <td>{{new_customer_form.email()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Phone Number</td>
+                    <td>{{new_customer_form.phone()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Billing Address 1</td>
+                    <td>{{new_customer_form.billingAddress1()}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Billing Address 2</td>
+                    <td>{{new_customer_form.billingAddress2()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Billing City</td>
+                    <td>{{new_customer_form.billingCity()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Billing State</td>
+                    <td>{{new_customer_form.billingState()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Billing Zip</td>
+                    <td>{{new_customer_form.billingZip()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Billing Country</td>
+                    <td>{{new_customer_form.billingCountry()}}
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="addressToggle" onclick="duplicateBilling()">Shipping same as billing</td>
+                </tr>
+
+                <tr>
+                    <td>Shipping Address 1</td>
+                    <td>{{new_customer_form.shippingAddress1()}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Shipping Address 2</td>
+                    <td>{{new_customer_form.shippingAddress2()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Shipping City</td>
+                    <td>{{new_customer_form.shippingCity()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Shipping State</td>
+                    <td>{{new_customer_form.shippingState()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Shipping Zip</td>
+                    <td>{{new_customer_form.shippingZip()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Shipping Country</td>
+                    <td>{{new_customer_form.shippingCountry()}}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>{{new_customer_form.submit()}} </td>
+                </tr>
+            </table>
+            </fieldset>
+
+
+            </form>
+
+
+
+            </span>
+
+
+</div>
+            {% else %}
+            Employees only! - No access
+{% endif %}
+</body>
+<style>
+.table .tr-inputs th {
+  position: relative;
+  padding: 0;
+  padding-bottom: 1.2rem;
+  margin: 0;
+}
+
+.table .tr-inputs div {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.table input {
+  width: 100%;
+  box-sizing: border-box;
+}
+</style>
+<script>
+    function duplicateBilling() {
+        if (document.querySelector("#addressToggle").checked) {
+            document.querySelector("#shippingAddress1").value = document.querySelector("#billingAddress1").value
+            document.querySelector("#shippingAddress2").value = document.querySelector("#billingAddress2").value
+            document.querySelector("#shippingCity").value = document.querySelector("#billingCity").value
+            document.querySelector("#shippingState").value = document.querySelector("#billingState").value
+            document.querySelector("#shippingZip").value = document.querySelector("#billingZip").value
+            document.querySelector("#shippingCountry").value = document.querySelector("#billingCountry").value
+        } else {
+            document.querySelector("#shippingAddress1").value = ""
+            document.querySelector("#shippingAddress2").value = ""
+            document.querySelector("#shippingCity").value = ""
+            document.querySelector("#shippingState").value = ""
+            document.querySelector("#shippingZip").value = ""
+            document.querySelector("#shippingCountry").value = ""
+        }
+    }
+
+    function editCustomer(e, cid){
+        e.preventDefault()
+        let customerRow = document.querySelector(`#customer-${cid}`)
+
+
+        let i =0
+        for (let cell of customerRow.cells){
+
+            if (!cell.outerHTML.includes("href=\"")){
+                // Cant edit customer ID
+                if (i === 0){
+                    cell.innerHTML = `<input id="${cell.classList[0].split('-')[1]}Edit" name="${cell.classList[0].split('-')[1]}Edit" type="text" value="${cell.innerText}" readonly >`
+                } else {
+                   cell.innerHTML = `<input id="${cell.classList[0].split('-')[1]}Edit" name="${cell.classList[0].split('-')[1]}Edit" type="text" value="${cell.innerText}">`
+                }
+            }
+
+            if (cell.outerHTML.includes("edit-")){
+                cell.getElementsByTagName("a")[0].removeAttribute("onclick")
+                cell.getElementsByTagName("a")[0].innerHTML = '{{edit_customer_form.submitEdit()}}'
+            }
+            i ++
+        }
+    }
+
+</script>
+</html>
+
+{% endblock %}

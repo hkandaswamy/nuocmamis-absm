@@ -1,0 +1,21 @@
+<!-- 
+    Dominic Nance, CSC 191
+    This file makes a button that allows for a company to be anonymous once it's applied to the form 
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Button that makes company anonymous</title>
+	</head>
+
+	<body>
+        <script>
+            function makeAnonymous() {
+                document.getElementById("change").textContent = " -- blank -- ";
+            }
+        </script>
+		<h1 id="change">The company ID is company@gmail.com</h1>
+        <button onclick="makeAnonymous()">Change the text above</button>
+	</body>
+</html>

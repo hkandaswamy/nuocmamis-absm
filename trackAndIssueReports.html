@@ -1,0 +1,198 @@
+<!-- 
+    Dominic Nance, CSC 191
+    This page allows for the employee to track and issue reports of products so that they can 
+    easily access informatin such as taxable orders with in a time period, orders for a customer,
+    and orders for a printed item. NM-53
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+		<title>Track & Issue Reports</title>
+	</head>
+
+	<body>
+        <script>
+            // These objects are meant to hold information for an order such as items, time of order,
+            // and whether the order has shipped or not - these are for demonstration 
+            let orderOne    = {orderNumber: 1,
+                               nameForOrder: "Dominic", 
+                               itemsInOrder: "CDs x 13, Ink x 5", 
+                               timeOfOrder: "12:32pm",
+                               fullyShipped: false};
+            let orderTwo    = {orderNumber: 2,
+                               nameForOrder: "Harish", 
+                               itemsInOrder: "Posters x 2, Pencil(s) x 20", 
+                               timeOfOrder: "9:33am",
+                               fullyShipped: true};
+            let orderThree  = {orderNumber: 3,
+                               nameForOrder: "Daisy", 
+                               itemsInOrder: "Keyboard(s) x 4",
+                               timeOfOrder: "7:01pm",
+                               fullyShipped: true};
+            let orderFour   = {orderNumber: 4,
+                               nameForOrder: "Vanessa", 
+                               itemsInOrder: "Staples x 30, SSD 1TB x 2", 
+                               timeOfOrder: "2:45pm",
+                               fullyShipped: false};
+            let orderFive   = {orderNumber: 5,
+                               nameForOrder: "Chon", 
+                               itemsInOrder: "Scissors x 3", 
+                               timeOfOrder: "3:31pm",
+                               fullyShipped: false};
+            let orderSix    = {orderNumber: 6,
+                               nameForOrder: "Stephanie", 
+                               itemsInOrder: "Scissors x 3, Eraser x 38 ", 
+                               timeOfOrder: "5:26pm",
+                               fullyShipped: false};
+            let orderSeven  = {orderNumber: 7,
+                               nameForOrder: "Caitlin", 
+                               itemsInOrder: "CDs x 2, Stapler x 1", 
+                               timeOfOrder: "9:02am",
+                               fullyShipped: true};
+            let orderEight  = {orderNumber: 8,
+                               nameForOrder: "Charlie", 
+                               itemsInOrder: "USB cable - 5ft x 2", 
+                               timeOfOrder: "2:45pm",
+                               fullyShipped: false};
+
+            // This array holds all reports for a client
+            const listOfReports = [orderOne, orderTwo, orderThree, orderFour,
+                                   orderFive, orderSix, orderSeven, orderEight];
+            
+            function displayReports() { 
+                let text = "";
+                for (let i = 0; i < listOfReports.length; i++) {
+                    text = text + displayOrderInformation(listOfReports[i]);
+                }    
+                
+                // Displays the report info in the displayArea div
+                document.getElementById("displayArea").innerHTML = text;
+            }
+
+            // This function displays order information in a particular format shown below
+            function displayOrderInformation(order) {
+                let text = "";
+                text = text + "Order number: " +
+                        order.orderNumber +  "<br\>&nbsp&nbsp&nbsp" +
+                        "Name: " + order.nameForOrder + "<br\>&nbsp&nbsp&nbsp" +
+                        "Items: " + order.itemsInOrder + "<br\>&nbsp&nbsp&nbsp" +
+                        "Time of Order: " + order.timeOfOrder +  "<br\>&nbsp&nbsp&nbsp" +
+                        "Shipped?: " + order.fullyShipped + "<br\>&nbsp&nbsp&nbsp<br\>"
+                
+                return text;
+            }
+            
+            function searchReports() {
+                // Takes the text from the input box and compares it to the name and item categories of an order
+                let search = confirm("Would you like to search by order number? Otherwise, you'll search by either name or item(s) in an order.")  
+                             ? searchByOrderNumber(prompt("What order number do you want?",""))
+                             : searchByName(prompt("What would you like to search for?", ""));
+
+                document.getElementById("displayArea").innerHTML = search;
+            }
+
+            // This function searches for an order by number
+            function searchByOrderNumber(num) {
+                for(let i = 0; i < listOfReports.length; i++) {
+                    if (listOfReports[i].orderNumber == num) {
+                        duplicateOrder(listOfReports[i]);
+                        return displayOrderInformation(listOfReports[i]);
+                    }
+                }
+                return "Could not find by order number.";
+            }
+
+            // This function searches for an order by name
+            function searchByName(input) {
+                let orders = "";
+                for(let i = 0; i < listOfReports.length; i++) {
+                    if (listOfReports[i].nameForOrder == input) {
+                        orders = orders + displayOrderInformation(listOfReports[i]);
+                    }
+                }
+                if (orders == "") {
+                    return "Could not find any order by name."
+                }
+                return orders;
+            }
+
+            function issueReports() {
+                // Creating a new order based on given information
+                var today = new Date();
+                let newOrder = {orderNumber: listOfReports[listOfReports.length - 1].orderNumber + 1,
+                               nameForOrder: prompt("Please enter name for the order:", ""), 
+                               itemsInOrder: prompt("Please enter the items in the order: ", ""), 
+                               timeOfOrder: confirm("Would you like to use the current time for your order?")
+                                            ? formatDateForAMPM(new Date()) : prompt("Please enter time of order:", ""),
+                               fullyShipped: confirm("Was the order shipped?") ? true : false};
+
+                // Adds the new order
+                listOfReports.push(newOrder);
+
+                // Displays the new order
+                document.getElementById("displayArea").innerHTML = "New order:<br\><br\>" +
+                        "Order number: " + newOrder.orderNumber +  "<br\>&nbsp&nbsp&nbsp" +
+                        "Name: " + newOrder.nameForOrder + "<br\>&nbsp&nbsp&nbsp" +
+                        "Items: " + newOrder.itemsInOrder + "<br\>&nbsp&nbsp&nbsp" +
+                        "Time of Order: " + newOrder.timeOfOrder +  "<br\>&nbsp&nbsp&nbsp" +
+                        "Shipped?: " + newOrder.fullyShipped + "<br\>&nbsp&nbsp&nbsp<br\>";
+
+                // Prompts the user if they'd like to duplicate their order
+                duplicateOrder(newOrder);
+            }
+            
+            // This function allows the 'issueReports()' function to refer to the current time in a correct format
+            function formatDateForAMPM(date) {
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                let time = "";
+                if (hour >= 12) {
+                    time = "pm";
+                } else {
+                    time = "am";
+                }
+                // This brings down the hours so it doesn't go over 12, and makes sure
+                // the hour doesn't go down to 0.
+                hour = hour % 12;
+                hour = hour ? hour : 12;
+
+                // This formats the minutes so that, if in the single digits, it adds a 0 to the front
+                minute = minute < 10 ? '0' + minute : minute;
+                let fullTime = hour + ":" + minute + " " + time;
+                return fullTime;
+            }
+
+            /* Dominic Nance, CSC 191
+             * 
+             * NM-61 Duplicate product order for the same company
+             *
+             * This function duplicates an order - there's multiple options:
+             *  - when you create a new order, you're given the option to duplicate it with a new order # and time 
+             *  - when you search and find an order, the duplicate order button will copy the recent search 
+             */
+            function duplicateOrder(order) {
+                let newOrderDup = confirm("Would you like to duplicate this order?") ? order 
+                    : "";
+
+                if (newOrderDup == "") {
+                    alert("The order will not be duplicated");
+                } else {
+                    let orderCopy = {orderNumber: listOfReports[listOfReports.length - 1].orderNumber + 1,
+                               nameForOrder: (newOrderDup.nameForOrder), 
+                               itemsInOrder: (newOrderDup.itemsInOrder), 
+                               timeOfOrder: (newOrderDup.timeOfOrder),
+                               fullyShipped: (newOrderDup.fullyShipped)};
+                    
+                    listOfReports.push(orderCopy);
+                }
+            }
+        </script>
+
+        <button onclick="displayReports()">Display Reports</button>
+        <button onclick="searchReports()">Search Reports</button>
+        <button onclick="issueReports()">Issue Reports</button>
+
+        <p id="displayArea">Please refer to the button prompts.</p>
+	</body>
+</html>

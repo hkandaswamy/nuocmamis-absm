@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Multiple Shipping Addresses </title>
+    <link rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <!--Add Multiple Shipping Accounts-->
+</header>
+
+		{% if user.userType=="admin" or user.userType=="employee" %}
+		<div>
+            {% if error %}
+            <p class=error><strong>Error:</strong> {{ error }}
+                {% endif %}
+                {% if message %}
+            <p class=error><strong>Result:</strong> {{ message }}
+                {% endif %}
+
+                <span style="display: flow">
+
+                            <form class="newShippingSystem" method="POST">
+                                {{new_ship_acc_form.hidden_tag()}}
+                                 <h1 align = "center">Add a New Shipping Account</h1>
+                            <fieldset>
+
+                                <table align="center" border="1" cellspacing="10">
+                                    <tr>
+                                        <td>Shipping Account Name</td>
+                                        <td>{{new_ship_acc_form.nameOfShippingAccount()}}
+                                    </tr>
+                                    <tr>
+                                        <th>E-mail</th>
+                                        <td>{{new_ship_acc_form.email()}}
+                                    </tr>
+                                    <tr>
+                                        <th>Phone #</th>
+                                        <td>{{new_ship_acc_form.phoneNumber()}}
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping Account Number</th>
+                                        <td>{{new_ship_acc_form.shippingAccountNum()}}
+                                    </tr>
+                                    <tr>
+                                        <th>Carrier</th>
+                                        <td>{{new_ship_acc_form.carrier()}}
+                                    </tr>
+                                    <tr>
+                                        <th>Address</th>
+                                        <td>{{new_ship_acc_form.address()}}
+                                    </tr>
+                                    <tr>
+                                        <th>Address2</th>
+                                        <td>{{new_ship_acc_form.address2()}}
+                                    </tr>
+                                    <tr>
+                                        <th>Company Name</th>
+                                        <td>{{new_ship_acc_form.companyName()}}
+                                    </tr>
+							
+
+                                </table><br>
+								<center>{{new_ship_acc_form.submit()}}<center>
+                                </fieldset>
+                        </form>
+</span>
+        </div>
+            {% else %}
+            Employees only! - No access
+{% endif %}
+</body>
+</html>
+
+{% endblock %}

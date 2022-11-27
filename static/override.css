@@ -1,0 +1,5 @@
+li {
+    padding: 0 !important;
+	-webkit-padding-start: 0;
+    list-style-type: none !important
+}

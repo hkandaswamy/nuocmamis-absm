@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang ="en">
+
+<style>
+    table, th, td {
+        border: 1.5px solid gray;
+        border-collapse: collapse;
+    }
+    .undertext {
+         font-weight: bold;
+         text-decoration: underline;
+         text-align: center;
+    }
+    
+</style>
+    <head>
+        <meta charset="UTF-8">
+        <title>QC Inspection Sheet</title>
+    </head>
+    <body>
+        <header>
+            <p style="padding-top: 4pt;padding-left: center;text-align: center;"><b>Absolute Media, Inc.</b></p>
+            <h2 style="padding-top: 4pt; padding-left: center; text-align: center;"><b>QC Inspection Sheet</b></h2>
+            <p style="padding-left: center;text-align: center;">Date, Time</p>
+            <table style="border-collapse: collapse; margin-left: 10pt">
+                <tr>
+                    <td><b>ABS Product ID</b></td>
+                    <td ><input type ="text" name ="ABSPID" maxlength = "15"/></td>
+                    <td ><b>Order Master ID</b></td>
+                    <td colspan="2"><input type ="text" name="OMID" maxlnegth ="15"/></td>
+                </tr>
+
+                <tr>
+                    <td><b>Product Title</b></td>
+                    <td colspan="4"><input type ="text" name ="PID" maxlength ="15"/></td>
+
+                </tr>
+
+                <tr>
+                    <td rowspan="2" colspan="2"><b>Product Category / Type</b> <br></br></td>
+                    <td rowspan="2"><input type ="text" name = "PCT" maxlength ="15"/></td>
+
+                    <td><b>Production</b>
+                    <input type="checkbox" id="production" name="production" value="production"></td>
+                    <td><b>Analyze Master</b>
+                    <input type="checkbox" id="analyzeMaster" name="analyzeMaster" value="analyzeMaster"></td>
+
+                    <tr>
+                        <td><b>Make Silver(s)</b>
+                        <input type="checkbox" id="silver" name="silver" value="silver"></td>
+                        <td><b>First Article</b>
+                        <input type="checkbox" id="firstArticle" name="firstArticle" value="firstArticle"></td>
+                    </tr>
+                </tr>
+
+                <tr>
+                    <td rowspan="2"><b>Order Quantity</b></td>
+                    <td rowspan="2" class="undertext"><b>Customer<br></br></b></td>
+                    <td rowspan="2" class="undertext"><b>Factory<br></br></b></td>
+                    <td><b>OEM Product ID</b></td>
+                    <td><input type ="text" name ="OEM" maxlength ="15"/></td>
+                    <tr>
+                        <td><b>Customer Name</b></td>
+                        <td><input type ="text" name ="custName" maxlength ="15"/></td>
+                    </tr>
+                </tr>
+
+                <tr>
+                    <td rowspan ="2"><b>Scheduled Ship Date / Time</b></td>
+                    <td rowspan="2"><input type = "text" name ="scheduledShip" maxlength = "15"/></td>
+                    <td rowspan="2" class ="undertext"><b>CD-ROM ETA<br></br></b></td>
+                    <td ><b>CD Manufacturer</b></td>
+                    <td><input type = "text" name ="cdMan" maxlength="15"/></td>
+                    <tr>
+                        <td><b>Customer PO #</b></td>
+                        <td><input type ="text" name ="custPO" maxlength ="15"/></td>
+                    </tr>
+                </tr>
+
+                <tr>
+                    <td><b>OEM ID</b></td>
+                    <td colspan="4"><input type ="text" name = "oemID" maxlength = "15"/></td>
+                </tr>
+
+                <tr>
+                    <td rowspan ="2"><b>Packaging</b></td>
+                    <td><input type ="text" name ="package" maxlength ="15"/></td>
+
+                    <td colspan="3" rowspan="2" class = "undertext"><b>Product Packaging Information<br></br></b></td>
+                    
+                </tr>
+                <tr></tr>
+                <!--fix-->
+                <tr>
+                    <td><b>Packaging Notes</b></td>
+                    <td colspan="4"><input type ="text" name ="PN" maxlength ="15"/></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4"><b>Final Inspection Notes By:</b><input type ="text" name="notes" maxlength ="15"/></td>
+                    <td colspan="1">        <b>Date: </b></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"><b>CD-R Gold Master</b></td>
+                    <td colspan="3"><b>CD-R Silver Master </b></td>
+                </tr>
+
+                <tr>
+                    <td>Label name</td>
+                    <td><input type ="text" name = "label1" maxlength = "15"/></td>
+                    <td>Label name</td>
+                    <td colspan="2"><input type ="text" name = "label2" maxlength = "15"/></td>
+                </tr>
+
+                <tr>
+                    <td>Byte Count</td>
+                    <td><input type ="text" name = "byteCount1" maxlength = "15"/></td>
+                    <td>Byte Count</td>
+                    <td colspan="2"><input type ="text" name = "byteCount2" maxlength = "15"/></td>
+                </tr>
+
+                <tr>
+                    <td>Virus Check Pass</td>
+                    <td><input type="text" name = "virus" maxlength = "15"/></td>
+                    <td>Compares to Gold</td>
+                    <td colspan="2"><input type ="text" name = "comGold" maxlength ="15"/></td>
+                </tr>
+
+                <tr>
+                    <td>CDA Analysis Pass</td>
+                    <td><input type ="text" name ="cdaAnalysis" maxlength ="15"/></td>
+                    <td>CDA Analysis Pass</td>
+                    <td colspan="2"><input type ="text" name ="cdaAnalysis" maxlength ="15"/></td>
+                </tr>
+
+                <tr>
+                    <td><b>Release to CD-ROM Manufacturer: </b></td>
+                    <td colspan="2"><b>YES</b></td>
+                    <td colspan="2"><b>NO</b></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><b>Gold/Silver Master Inspection By: </b></td>
+                    <td colspan="2"><b>Date: </b></td>
+                </tr>
+
+                <tr>
+                    <td> </td>
+                </tr>
+
+                <tr>
+                    <td colspan="5"><b>Incoming CD Inspection</b></td>
+                </tr>
+
+                <tr>
+                    <td>Physical count of lot</td>
+                    <td colspan="1"><input type ="text" name = "physCount" maxlength = "15"/></td>
+                    <td>QC Samples To Pull / Pulled</td>
+                    <td colspan="1"><input type = "text" name = "qcSamples" maxlength = "15"/></td>
+                    <td colspan="1"><input type = "text" name = "qcSamples2" maxlength = "15"/></td>
+                </tr>
+
+                <tr>
+                    <td>Label</td>
+                    <td><input type = "text" name = "labels" maxlength = "15"/></td>
+                    <td colspan="2"> Byte Count</td>
+                    <td><input type = "text" name = "byteCou" maxlength = "15"/></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">Analyzer Report compares to Gold / Silver</td>
+                    <td><b>YES</b></td>
+                    <td><b>NO</b></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="4"><b>Data Inspection By:</b></td>
+                    <td><b>Date:</b></td>
+                </tr>
+
+                <tr>
+                    <td> </td>
+                </tr>
+
+                <tr>
+                    <td><b>CD-R</b></td>
+                    <td colspan="2">Recording surface of each of each disc Visually Inspected</td>
+                    <td><b>YES</b></td>
+                    <td><b>NO</b></td>
+                </tr>
+
+                <tr>
+                    <td><b>CD-ROM</b></td>
+                    <td>Lacquer</td>
+                    <td>Clouding</td>
+                    <td>Mouse Bites</td>
+                    <td>Dimples</td>
+                    <td>Pits</td>
+                </tr>
+
+                <tr>
+                    <td><b>PASS</b></td>
+                    <td><input type = "text" name="pass1" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass2" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass3" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass4" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass5" maxlength = "15"/></td>
+                </tr>
+
+                <tr>
+                    <td><b>FAIL</b></td>
+                    <td><input  type = "text" name="fail1" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail2" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail3" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail4" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail5" maxlength = "15"/></td>
+
+                </tr>
+
+                <tr>
+                    <td colspan="4"><b>Physical Inspection By:</b></td>
+                    <td><b>Date: </b></td>
+                </tr>
+
+                <tr>
+                    <td> </td>
+                </tr>
+
+                <tr>
+                    <td><b>IMAGE QUALITY</b></td>
+                    <td>Correct Artwork</td>
+                    <td>OEM Part No</td>
+                    <td>Pms Match</td>
+                    <td>In Register</td>
+                    <td>Over Exposed</td>
+                    <td>Moire` Pattern</td>
+                    <td>Heavy Print</td>
+                    <td>Contam.</td>
+                </tr>
+
+                <tr>
+                    <td><b>PASS</b></td>
+                    <td><input type = "text" name="pass1" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass2" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass3" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass4" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass5" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass6" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass7" maxlength = "15"/></td>
+                    <td><input type = "text" name="pass8" maxlength = "15"/></td>
+                </tr>
+
+                <tr>
+                    <td><b>FAIL</b></td>
+                    <td><input  type = "text" name="fail1" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail2" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail3" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail4" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail5" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail6" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail7" maxlength = "15"/></td>
+                    <td><input  type = "text" name="fail8" maxlength = "15"/></td>
+                </tr>
+            </table>
+        </header>
+    </body>
+
+</html>

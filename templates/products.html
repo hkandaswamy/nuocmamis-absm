@@ -1,0 +1,219 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Create Product </title>
+    <link rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <!--Add a new Product!-->
+</header>
+
+{% if user.userType=="admin" or user.userType=="employee" %}
+<div>
+    {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
+        {% if message %}
+    <p class=error><strong>Result:</strong> {{ message }}
+        {% endif %}
+
+        <span style="display: flow">
+
+            <form class="searchProducts" method="POST" action="">
+                {{query_product_form.hidden_tag()}}
+                <h1 style="text-align: center">Search for Products</h1>
+                <fieldset>
+
+                <table align="center" border="0" cellspacing="10">
+                <tr>
+                    <td>Search by:</td>
+                    <td>{{query_product_form.productSearchOptions()}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Search for:</td>
+                    <td>{{query_product_form.productSearchQuery()}}
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        {{query_product_form.submitProductSearch()}}
+<!--                        <button type="submit" class="submit">Search</button> -->
+                    </td>
+                </tr>
+            </table>
+                <hr>
+                </fieldset>
+
+            </form>
+
+            <h3 style="text-align: center">Results</h3>
+
+
+            <form class="editProduct" method="POST">
+                {{edit_product_form.hidden_tag()}}
+                <table style="margin: auto;" border="1" id="productSearchResults" class="table table-striped table-sm">
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>OEM ID</th>
+                            <th>Product Type</th>
+                            <th>Title</th>
+                            <th>Product Description</th>
+                            <th>Color Notes</th>
+                            <th>Packaging Notes</th>
+                            <th>Product Notes</th>
+                            <th>Service Notes</th>
+                            <th>Insert</th>
+                        </tr>
+                        {% if productSearchResults %}
+                        {% for product in productSearchResults %}
+                        <tr id="product-{{product.oemID}}">
+                            <td class="product-customerID">{{product.customerID}}</td>
+                            <td class="product-oemID">{{product.oemID}}</td>
+                            <td class="product-productType">{{product.productType.title()}}</td>
+                            <td class="product-title">{{product.title.title()}}</td>
+                            <td class="product-productDescription">{{product.productDescription}}</td>
+                            <td class="product-colorNotes">{{product.colorNotes}}</td>
+                            <td class="product-packagingNotes">{{product.packagingNotes.title()}}</td>
+                            <td class="product-productNotes">{{product.productNotes.title()}}</td>
+                            <td class="product-serviceNotes">{{product.serviceNotes.title()}}</td>
+                            <td class="product-insert">{{product.insert.title()}}</td>
+                            <td>
+                                <a href="#" id="edit-{{product.oemID}}"
+                                onclick="editProduct(event, '{{product.oemID}}')">
+                                    Edit
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{url_for('delete_product', oem_id=product.oemID)}}"
+                                onclick="return confirm(`Do you want to permanently delete {{product.title.title()}} - OEM ID: {{product.oemID}} ?`);">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </table>
+            </form>
+
+
+            <form class="newProduct" method="POST">
+            {{new_product_form.hidden_tag()}}
+            <h1 style="text-align: center">Create a new Product</h1>
+            <fieldset>
+
+
+            <table align="center" border="0" cellspacing="10">
+
+                <tr>
+                    <td>Customer ID</td>
+                    <td>{{new_product_form.customerID()}}
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td>Product Type</td>
+                    <td>{{new_product_form.productType()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Title</td>
+                    <td>{{new_product_form.title()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Description</td>
+                    <td>{{new_product_form.productDescription()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Color Notes</td>
+                    <td>{{new_product_form.colorNotes()}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Packaging Notes</td>
+                    <td>{{new_product_form.packagingNotes()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Product Notes</td>
+                    <td>{{new_product_form.productNotes()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Service Notes</td>
+                    <td>{{new_product_form.serviceNotes()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Insert</td>
+                    <td>{{new_product_form.insert()}}
+                    </td>
+                </tr>
+
+                <tr>
+                    
+                </tr>
+            </table>
+            </fieldset>
+
+            <center>{{new_product_form.submit()}}</center>
+
+            </form>
+
+
+
+            </span>
+
+
+</div>
+            {% else %}
+            Employees only! - No access
+{% endif %}
+</body>
+<script>
+
+    function editProduct(e, cid){
+        e.preventDefault()
+        let productRow = document.querySelector(`#product-${cid}`)
+
+
+        let i =0
+        for (let cell of productRow.cells){
+
+            if (!cell.outerHTML.includes("href=\"")){
+                // Cant edit OEM ID
+                if (i === 0 || i === 1){
+                    cell.innerHTML = `<input id="${cell.classList[0].split('-')[1]}Edit" name="${cell.classList[0].split('-')[1]}Edit" type="text" value="${cell.innerText}" readonly >`
+                } else {
+                   cell.innerHTML = `<input id="${cell.classList[0].split('-')[1]}Edit" name="${cell.classList[0].split('-')[1]}Edit" type="text" value="${cell.innerText}">`
+                }
+            }
+
+            if (cell.outerHTML.includes("edit-")){
+                cell.getElementsByTagName("a")[0].removeAttribute("onclick")
+                cell.getElementsByTagName("a")[0].innerHTML = '{{edit_product_form.submitEdit()}}'
+            }
+            i ++
+        }
+    }
+</script>
+</html>
+
+{% endblock %}

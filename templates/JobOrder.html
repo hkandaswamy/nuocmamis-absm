@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    table, th, td {
+        border: 1.5px solid gray;
+        border-collapse: collapse;
+    }
+    .undertext {
+        font-weight: bold;
+        text-decoration: underline;
+        text-align: center;
+    }
+    </style>
+    <head>
+        <meta charset="UTF-8">
+        <title>Job Order</title>
+    </head>
+    <body>
+        <header>
+            <p style="padding-top: 4pt;padding-left: center;text-align: center;"><b>Absolute Media, Inc.</b></p>
+            <h2 style="padding-top: 4pt;padding-left: center;text-align: center;">Job Order Sheet</h2>
+            <p style="padding-left: center;text-align: center;">Date, Time</p>
+            <table style="border-collapse: collapse; margin-left: 10pt">
+                <tr>
+                    <td>
+                        <b>ABS FGProduct PN</b>
+                    </td>
+                    <td>
+                        <input type ="text" maxlength="15"/>
+                    </td>
+                    <td>
+                        <b>Order Master ID</b>
+                    </td>
+                    <td colspan="2">
+                        <input type ="text" maxlength="15"/>
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        <b>FG Product Title</b>
+                    </td>
+                    <td colspan="4">
+                        <input type ="text" maxlength="15">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>FG Product Category / Type</b>
+                    </td>
+                    <td colspan="2">
+                        <input type ="text" maxlength="15"/>
+                    </td>
+                    <td>
+                        <b>Production</b><input type="checkbox" id="production" name="production" value="production">
+                    </td>
+                    <td>
+                        <b>First Article</b><input type="checkbox" id="firstArticle" name="firstArticle" value="firstArticle">
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">
+                        <b>Order Quantity</b>   
+                    </td>
+                    <td rowspan="2" class="undertext">
+                        Customer
+                        <br><br/>
+                    </td>
+                    <td rowspan="2" class="undertext">
+                        Factory
+                        <br><br/>
+                    </td>
+                    <td>
+                        <b>OEM Product ID</b>
+                    </td>
+                    <td>
+                        <input type ="text" name="OEMPID" maxlength="15"/>
+                    </td>
+                <tr>
+                    <td>
+                        <b>Customer Name</b>
+                    </td>
+                    <td>
+                        <input type ="text" name="CN" maxlength="15"/>
+                    </td>
+                </tr>
+                    
+                <tr>
+                    <td rowspan="2">
+                        <b>Scheduled Ship</b>
+                        <br><b>Date / Time</b><br/>
+                    </td>
+                    <td rowspan="2">
+                        <input type ="text" name="SSDT" maxlength="15"/>
+                    </td>
+                    <td rowspan="2" class="undertext">
+                        CD-ROM ETA
+                        <br><br/>
+                    </td>
+                    <td>
+                        <b>Customer PO #</b>
+                     </td>
+                     <td>
+                        <input type ="text" name="CPO" maxlength="15"/>
+                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>CD Manufacturer</b>
+                     </td>
+                    <td colspan="4">
+                        <input type ="text" name="OID" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>OEM ID</b>
+                    </td>
+                    <td colspan="4">
+                        <input type ="text" name="OEMId" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">
+                        <b>Packaging</b>
+                    </td>
+                    <td colspan="4" rowspan="2" class="undertext">
+                        Product Packaging Information
+                        <br><br/>
+                    </td>
+                </tr>
+                <tr>
+                <tr></tr>
+                    <td>
+                        <b>Packaging Notes</b>
+                    </td>
+                    <td colspan="4">
+                        <input type ="text" name="PN" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Shipping<br>Instructions<br/></b>
+                    </td>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td>
+                        <b>Ship Via</b>
+                    </td>
+                    <td>
+                        <input type ="text" name="SV" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="padding-top: 4pt;padding-left: center;text-align: center;">
+                        <b>Job Order Notes</b></p> 
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                    <td colspan="3">
+                        <input type ="text" name="SI" maxlength="15"/>
+                    </td>
+                </tr>
+            </table>         
+        </body>
+</html>
